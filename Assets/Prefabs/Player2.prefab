@@ -3230,7 +3230,7 @@ MonoBehaviour:
   maxHP: 120
   currentHP: 120
   maxEnergy: 80
-  currentEnergy: 25
+  currentEnergy: 50
   energyPerTurn: 8
   meleeDamage: 10
   meleeCost: 5

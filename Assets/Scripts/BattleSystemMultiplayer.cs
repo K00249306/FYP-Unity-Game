@@ -78,34 +78,49 @@ public class BattleSystemMultiplayer : MonoBehaviour
             return;
         }
 
+        // Stops players from being able to use abilities over and over
+        state = BattleState.PLAYERACTION;
         StartCoroutine(Player1Melee());
     }
 
     // Attacked player takes melee damage and battle ends if they die
     IEnumerator Player1Melee()
     {
-        yield return new WaitForSeconds(1f);
-
-        bool isDead = player2Monster.TakeMeleeDamage(player1Monster.meleeDamage);
-        player1Monster.TakeMeleeCost(player1Monster.meleeCost);
-
-        player2HUD.UpdateHP(player2Monster.currentHP);
-        player1HUD.UpdateEnergy(player1Monster.currentEnergy);
-        dialogueText.text = "The attack landed!";
-
-        yield return new WaitForSeconds(1f);
-
-        if (isDead)
+        // Checks if player has enough energy to use ability
+        if (player1Monster.meleeCost <= player1Monster.currentEnergy)
         {
-            // End battle 
-            state = BattleState.WON;
-            EndBattle();
+            yield return new WaitForSeconds(1f);
+
+            bool isDead = player2Monster.TakeMeleeDamage(player1Monster.meleeDamage);
+            player1Monster.TakeMeleeCost(player1Monster.meleeCost);
+
+            player2HUD.UpdateHP(player2Monster.currentHP);
+            player1HUD.UpdateEnergy(player1Monster.currentEnergy);
+
+            player1Monster.EnergyPerTurn(player1Monster.energyPerTurn);
+            yield return new WaitForSeconds(1f);
+            player1HUD.UpdateEnergy(player1Monster.currentEnergy);
+            dialogueText.text = "The attack landed!";
+
+            yield return new WaitForSeconds(1f);
+
+            if (isDead)
+            {
+                // End battle 
+                state = BattleState.WON;
+                EndBattle();
+            }
+            else
+            {
+                // Enemy turn
+                state = BattleState.PLAYER2TURN;
+                StartCoroutine(Player2Turn());
+            }
         }
         else
         {
-            // Enemy turn
-            state = BattleState.PLAYER2TURN;
-            StartCoroutine(Player2Turn());
+            dialogueText.text = "Not Enough Energy!";
+            state = BattleState.PLAYER1TURN;
         }
     }
 
@@ -117,73 +132,103 @@ public class BattleSystemMultiplayer : MonoBehaviour
             return;
         }
 
+        // Stops players from being able to use abilities over and over
+        state = BattleState.PLAYERACTION;
         StartCoroutine(Player1Ranged());
     }
 
     // Attacked player takes ranged damage and battle ends if they die
     IEnumerator Player1Ranged()
     {
-        yield return new WaitForSeconds(1f);
-
-        bool isDead = player2Monster.TakeRangedDamage(player1Monster.rangedDamage);
-        player1Monster.TakeRangedCost(player1Monster.rangedCost);
-
-        player2HUD.UpdateHP(player2Monster.currentHP);
-        player1HUD.UpdateEnergy(player1Monster.currentEnergy);
-        dialogueText.text = "The attack landed!";
-
-        yield return new WaitForSeconds(1f);
-
-        if (isDead)
+        // Checks if player has enough energy to use ability
+        if (player1Monster.rangedCost <= player1Monster.currentEnergy)
         {
-            // End battle 
-            state = BattleState.WON;
-            EndBattle();
+            yield return new WaitForSeconds(1f);
+
+            bool isDead = player2Monster.TakeRangedDamage(player1Monster.rangedDamage);
+            player1Monster.TakeRangedCost(player1Monster.rangedCost);
+
+            player2HUD.UpdateHP(player2Monster.currentHP);
+            player1HUD.UpdateEnergy(player1Monster.currentEnergy);
+
+            player1Monster.EnergyPerTurn(player1Monster.energyPerTurn);
+            yield return new WaitForSeconds(1f);
+            player1HUD.UpdateEnergy(player1Monster.currentEnergy);
+            dialogueText.text = "The attack landed!";
+
+            yield return new WaitForSeconds(1f);
+
+            if (isDead)
+            {
+                // End battle 
+                state = BattleState.WON;
+                EndBattle();
+            }
+            else
+            {
+                // Enemy turn
+                state = BattleState.PLAYER2TURN;
+                StartCoroutine(Player2Turn());
+            }
         }
         else
         {
-            // Enemy turn
-            state = BattleState.PLAYER2TURN;
-            StartCoroutine(Player2Turn());
+            dialogueText.text = "Not Enough Energy!";
+            state = BattleState.PLAYER1TURN;
         }
     }
 
     // Player heals
-    public void OnhealButton()
+    public void OnHealButton()
     {
         if (state != BattleState.PLAYER1TURN)
         {
             return;
         }
 
+        // Stops players from being able to use abilities over and over
+        state = BattleState.PLAYERACTION;
         StartCoroutine(Player1Heal());
     }
 
     // Player heals
     IEnumerator Player1Heal()
     {
-        yield return new WaitForSeconds(1f);
-
-        bool isDead = player1Monster.PlayerHeal(player1Monster.healAmount);
-        player1Monster.TakeHealCost(player1Monster.healCost);
-
-        player1HUD.UpdateHP(player2Monster.currentHP);
-        player1HUD.UpdateEnergy(player1Monster.currentEnergy);
-        dialogueText.text = "You healed 30 points";
-
-        yield return new WaitForSeconds(1f);
-
-        if (isDead)
+        // Checks if player has enough energy to use ability
+        if (player1Monster.healCost <= player1Monster.currentEnergy)
         {
-            // End battle 
-            state = BattleState.WON;
-            EndBattle();
+            yield return new WaitForSeconds(1f);
+
+            bool isDead = player1Monster.PlayerHeal(player1Monster.healAmount);
+            player1Monster.TakeHealCost(player1Monster.healCost);
+
+            player1HUD.UpdateHP(player2Monster.currentHP);
+            player1HUD.UpdateEnergy(player1Monster.currentEnergy);
+
+            player1Monster.EnergyPerTurn(player1Monster.energyPerTurn);
+            yield return new WaitForSeconds(1f);
+            player1HUD.UpdateEnergy(player1Monster.currentEnergy);
+            dialogueText.text = "You healed 30 points";
+
+            yield return new WaitForSeconds(1f);
+
+            if (isDead)
+            {
+                // End battle 
+                state = BattleState.WON;
+                EndBattle();
+            }
+            else
+            {
+                // Enemy turn
+                state = BattleState.PLAYER2TURN;
+                StartCoroutine(Player2Turn());
+            }
         }
         else
         {
-            // Enemy turn
-            state = BattleState.PLAYER2TURN;
-            StartCoroutine(Player2Turn());
+            dialogueText.text = "Not Enough Energy!";
+            state = BattleState.PLAYER1TURN;
         }
     }
 
@@ -195,63 +240,273 @@ public class BattleSystemMultiplayer : MonoBehaviour
             return;
         }
 
+        // Stops players from being able to use abilities over and over
+        state = BattleState.PLAYERACTION;
         StartCoroutine(Player1Special());
     }
 
     // Attacked player takes special damage and battle ends if they die
     IEnumerator Player1Special()
     {
-        yield return new WaitForSeconds(1f);
-
-        bool isDead = player2Monster.TakeSpecialDamage(player1Monster.specialDamage);
-        player1Monster.TakeSpecialCost(player1Monster.specialCost);
-
-        player2HUD.UpdateHP(player2Monster.currentHP);
-        player1HUD.UpdateEnergy(player1Monster.currentEnergy);
-        dialogueText.text = "The attack landed!";
-
-        yield return new WaitForSeconds(1f);
-
-        if (isDead)
+        // Checks if player has enough energy to use ability
+        if (player1Monster.specialCost <= player1Monster.currentEnergy)
         {
-            // End battle 
-            state = BattleState.WON;
-            EndBattle();
+            yield return new WaitForSeconds(1f);
+
+            bool isDead = player2Monster.TakeSpecialDamage(player1Monster.specialDamage);
+            player1Monster.TakeSpecialCost(player1Monster.specialCost);
+
+            player2HUD.UpdateHP(player2Monster.currentHP);
+            player1HUD.UpdateEnergy(player1Monster.currentEnergy);
+
+            player1Monster.EnergyPerTurn(player1Monster.energyPerTurn);
+            yield return new WaitForSeconds(1f);
+            player1HUD.UpdateEnergy(player1Monster.currentEnergy);
+            dialogueText.text = "The attack landed!";
+
+            yield return new WaitForSeconds(1f);
+
+            if (isDead)
+            {
+                // End battle 
+                state = BattleState.WON;
+                EndBattle();
+            }
+            else
+            {
+                // Enemy turn
+                state = BattleState.PLAYER2TURN;
+                StartCoroutine(Player2Turn());
+            }
         }
         else
         {
-            // Enemy turn
-            state = BattleState.PLAYER2TURN;
-            StartCoroutine(Player2Turn());
+            dialogueText.text = "Not Enough Energy!";
+            state = BattleState.PLAYER1TURN;
         }
     }
 
     // Player 2 turn
     IEnumerator Player2Turn()
     {
-        dialogueText.text = "Player 2's turn!";
-
         yield return new WaitForSeconds(1f);
 
-        bool isDead = player1Monster.TakeMeleeDamage(player2Monster.meleeDamage);
-        player2Monster.TakeMeleeCost(player2Monster.meleeCost);
+        state = BattleState.PLAYER2TURN;
+        dialogueText.text = "Player 2's Turn!";
+    }
 
-        player1HUD.UpdateHP(player1Monster.currentHP);
-        player2HUD.UpdateEnergy(player2Monster.currentEnergy);
-
-        yield return new WaitForSeconds(1f);
-
-        if (isDead)
+    // Use melee attack when melee button is pressed
+    public void OnMeleeButton2()
+    {
+        if (state != BattleState.PLAYER2TURN)
         {
-            // End battle 
-            state = BattleState.LOST;
-            EndBattle();
+            return;
+        }
+
+        // Stops players from being able to use abilities over and over
+        state = BattleState.PLAYERACTION;
+        StartCoroutine(Player2Melee());
+    }
+
+    IEnumerator Player2Melee()
+    {
+        // Checks if player has enough energy to use ability
+        if (player2Monster.meleeCost <= player2Monster.currentEnergy)
+        {
+            yield return new WaitForSeconds(1f);
+
+            bool isDead = player1Monster.TakeMeleeDamage(player2Monster.meleeDamage);
+            player2Monster.TakeMeleeCost(player2Monster.meleeCost);
+
+            player1HUD.UpdateHP(player1Monster.currentHP);
+            player2HUD.UpdateEnergy(player2Monster.currentEnergy);
+
+            player2Monster.EnergyPerTurn(player2Monster.energyPerTurn);
+            yield return new WaitForSeconds(1f);
+            player2HUD.UpdateEnergy(player2Monster.currentEnergy);
+            dialogueText.text = "The attack landed!";
+
+            yield return new WaitForSeconds(1f);
+
+            if (isDead)
+            {
+                // End battle 
+                state = BattleState.WON;
+                EndBattle();
+            }
+            else
+            {
+                // Enemy turn
+                state = BattleState.PLAYER1TURN;
+                Player1Turn();
+            }
         }
         else
         {
-            // Enemy turn
-            state = BattleState.PLAYER1TURN;
-            Player1Turn();
+            dialogueText.text = "Not Enough Energy!";
+            state = BattleState.PLAYER2TURN;
+        }
+    }
+
+    // Use ranged attack when ranged button is pressed
+    public void OnRangedButton2()
+    {
+        if (state != BattleState.PLAYER2TURN)
+        {
+            return;
+        }
+
+        // Stops players from being able to use abilities over and over
+        state = BattleState.PLAYERACTION;
+        StartCoroutine(Player2Ranged());
+    }
+
+    // Attacked player takes ranged damage and battle ends if they die
+    IEnumerator Player2Ranged()
+    {
+        // Checks if player has enough energy to use ability
+        if (player2Monster.rangedCost <= player1Monster.currentEnergy)
+        {
+            yield return new WaitForSeconds(1f);
+
+            bool isDead = player1Monster.TakeRangedDamage(player2Monster.rangedDamage);
+            player2Monster.TakeRangedCost(player2Monster.rangedCost);
+
+            player1HUD.UpdateHP(player1Monster.currentHP);
+            player2HUD.UpdateEnergy(player2Monster.currentEnergy);
+
+            player2Monster.EnergyPerTurn(player2Monster.energyPerTurn);
+            yield return new WaitForSeconds(1f);
+            player2HUD.UpdateEnergy(player2Monster.currentEnergy);
+            dialogueText.text = "The attack landed!";
+
+            yield return new WaitForSeconds(1f);
+
+            if (isDead)
+            {
+                // End battle 
+                state = BattleState.WON;
+                EndBattle();
+            }
+            else
+            {
+                // Enemy turn
+                state = BattleState.PLAYER1TURN;
+                Player1Turn();
+            }
+        }
+        else
+        {
+            dialogueText.text = "Not Enough Energy!";
+            state = BattleState.PLAYER2TURN;
+        }
+    }
+
+    // Player heals
+    public void OnHealButton2()
+    {
+        if (state != BattleState.PLAYER2TURN)
+        {
+            return;
+        }
+
+        // Stops players from being able to use abilities over and over
+        state = BattleState.PLAYERACTION;
+        StartCoroutine(Player2Heal());
+    }
+
+    // Player heals
+    IEnumerator Player2Heal()
+    {
+        // Checks if player has enough energy to use ability
+        if (player2Monster.healCost <= player2Monster.currentEnergy)
+        {
+            yield return new WaitForSeconds(1f);
+
+            bool isDead = player2Monster.PlayerHeal(player2Monster.healAmount);
+            player2Monster.TakeHealCost(player2Monster.healCost);
+
+            player2HUD.UpdateHP(player1Monster.currentHP);
+            player2HUD.UpdateEnergy(player2Monster.currentEnergy);
+
+            player2Monster.EnergyPerTurn(player2Monster.energyPerTurn);
+            yield return new WaitForSeconds(1f);
+            player2HUD.UpdateEnergy(player2Monster.currentEnergy);
+            dialogueText.text = "You healed 30 points";
+
+            yield return new WaitForSeconds(1f);
+
+            if (isDead)
+            {
+                // End battle 
+                state = BattleState.WON;
+                EndBattle();
+            }
+            else
+            {
+                // Enemy turn
+                state = BattleState.PLAYER1TURN;
+                Player1Turn();
+            }
+        }
+        else
+        {
+            dialogueText.text = "Not Enough Energy!";
+            state = BattleState.PLAYER2TURN;
+        }
+    }
+
+    // Use special attack when special button is pressed
+    public void OnSpecialButton2()
+    {
+        if (state != BattleState.PLAYER2TURN)
+        {
+            return;
+        }
+
+        // Stops players from being able to use abilities over and over
+        state = BattleState.PLAYERACTION;
+        StartCoroutine(Player2Special());
+    }
+
+    // Attacked player takes special damage and battle ends if they die
+    IEnumerator Player2Special()
+    {
+        // Checks if player has enough energy to use ability
+        if (player2Monster.specialCost <= player2Monster.currentEnergy)
+        {
+            yield return new WaitForSeconds(1f);
+
+            bool isDead = player1Monster.TakeSpecialDamage(player2Monster.specialDamage);
+            player2Monster.TakeSpecialCost(player2Monster.specialCost);
+
+            player1HUD.UpdateHP(player1Monster.currentHP);
+            player2HUD.UpdateEnergy(player2Monster.currentEnergy);
+
+            player2Monster.EnergyPerTurn(player2Monster.energyPerTurn);
+            yield return new WaitForSeconds(1f);
+            player2HUD.UpdateEnergy(player2Monster.currentEnergy);
+            dialogueText.text = "The attack landed!";
+
+            yield return new WaitForSeconds(1f);
+
+            if (isDead)
+            {
+                // End battle 
+                state = BattleState.WON;
+                EndBattle();
+            }
+            else
+            {
+                // Enemy turn
+                state = BattleState.PLAYER1TURN;
+                Player1Turn();
+            }
+        }
+        else
+        {
+            dialogueText.text = "Not Enough Energy!";
+            state = BattleState.PLAYER2TURN;
         }
     }
 

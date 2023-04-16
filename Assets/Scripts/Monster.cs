@@ -41,6 +41,16 @@ public class Monster : MonoBehaviour
     {
         currentEnergy -= meleeCost;
 
+        if (currentEnergy > maxEnergy)
+        {
+            currentEnergy = maxEnergy;
+        }
+
+        if (currentEnergy <= 0)
+        {
+            currentEnergy = 0;
+        }
+
         if (currentEnergy <= 0)
         {
             return true;
@@ -70,6 +80,16 @@ public class Monster : MonoBehaviour
     public bool TakeRangedCost(int rangedCost)
     {
         currentEnergy -= rangedCost;
+
+        if (currentEnergy > maxEnergy)
+        {
+            currentEnergy = maxEnergy;
+        }
+
+        if (currentEnergy <= 0)
+        {
+            currentEnergy = 0;
+        }
 
         if (currentEnergy <= 0)
         {
@@ -101,6 +121,16 @@ public class Monster : MonoBehaviour
     {
         currentEnergy -= specialCost;
 
+        if (currentEnergy > maxEnergy)
+        {
+            currentEnergy = maxEnergy;
+        }
+
+        if (currentEnergy <= 0)
+        {
+            currentEnergy = 0;
+        }
+
         if (currentEnergy <= 0)
         {
             return true;
@@ -116,6 +146,11 @@ public class Monster : MonoBehaviour
     {
         currentHP += healAmount;
 
+        if (currentHP > maxHP)
+        {
+            currentHP = maxHP;
+        }
+
         if (currentEnergy <= 0)
         {
             return true;
@@ -129,7 +164,41 @@ public class Monster : MonoBehaviour
     // Subtracts energy for Healing
     public bool TakeHealCost(int healCost)
     {
-        currentEnergy -= specialCost;
+        currentEnergy -= healCost;
+
+        if (currentEnergy > maxEnergy)
+        {
+            currentEnergy = maxEnergy;
+        }
+
+        if (currentEnergy <= 0)
+        {
+            currentEnergy = 0;
+        }
+
+        if (currentEnergy <= 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public bool EnergyPerTurn(int energyPerTurn)
+    {
+        currentEnergy += energyPerTurn;
+
+        if (currentEnergy > maxEnergy)
+        {
+            currentEnergy = maxEnergy;
+        }
+
+        if (currentEnergy <= 0)
+        {
+            currentEnergy = 0;
+        }
 
         if (currentEnergy <= 0)
         {
