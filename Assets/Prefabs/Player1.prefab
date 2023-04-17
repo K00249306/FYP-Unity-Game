@@ -2642,15 +2642,15 @@ MonoBehaviour:
   maxHP: 100
   currentHP: 100
   maxEnergy: 100
-  currentEnergy: 60
-  energyPerTurn: 8
+  currentEnergy: 100
+  energyPerTurn: 5
   meleeDamage: 10
-  meleeCost: 5
+  meleeCost: 0
   rangedDamage: 20
   rangedCost: 10
   specialDamage: 30
   specialCost: 20
-  healAmount: 30
+  healAmount: 15
   healCost: 15
 --- !u!1 &6277817225890435882
 GameObject:

@@ -6,8 +6,14 @@ using TMPro;
 
 public class BattleSystemMultiplayer : MonoBehaviour
 {
-    // Button to return to main menu when match is complete
+    // Creates different states or stages of game 
+    public enum BattleState { START, PLAYER1TURN, PLAYER2TURN, PLAYERACTION, WON, LOST }
+
+    // Buttons and objects to become active and not active when match is complete
     public Button mmButton;
+    public Button backButton;
+    public GameObject abilityPanel;
+    public GameObject abilityPanel2;
 
     // Accesses prefabs
     public GameObject player1Prefab;
@@ -77,7 +83,6 @@ public class BattleSystemMultiplayer : MonoBehaviour
         {
             return;
         }
-
         // Stops players from being able to use abilities over and over
         state = BattleState.PLAYERACTION;
         StartCoroutine(Player1Melee());
@@ -95,12 +100,18 @@ public class BattleSystemMultiplayer : MonoBehaviour
             player1Monster.TakeMeleeCost(player1Monster.meleeCost);
 
             player2HUD.UpdateHP(player2Monster.currentHP);
+            player2HUD.UpdateHPText(player2Monster.currentHP);
+            dialogueText.text = "The attack landed!";
+
             player1HUD.UpdateEnergy(player1Monster.currentEnergy);
+            player1HUD.UpdateEnergyText(player1Monster.currentEnergy);
+
+            yield return new WaitForSeconds(1f);
 
             player1Monster.EnergyPerTurn(player1Monster.energyPerTurn);
-            yield return new WaitForSeconds(1f);
             player1HUD.UpdateEnergy(player1Monster.currentEnergy);
-            dialogueText.text = "The attack landed!";
+            player1HUD.UpdateEnergyText(player1Monster.currentEnergy);
+            dialogueText.text = "Energy restored!";
 
             yield return new WaitForSeconds(1f);
 
@@ -119,7 +130,7 @@ public class BattleSystemMultiplayer : MonoBehaviour
         }
         else
         {
-            dialogueText.text = "Not Enough Energy!";
+            dialogueText.text = "Not enough energy!";
             state = BattleState.PLAYER1TURN;
         }
     }
@@ -131,7 +142,6 @@ public class BattleSystemMultiplayer : MonoBehaviour
         {
             return;
         }
-
         // Stops players from being able to use abilities over and over
         state = BattleState.PLAYERACTION;
         StartCoroutine(Player1Ranged());
@@ -149,12 +159,18 @@ public class BattleSystemMultiplayer : MonoBehaviour
             player1Monster.TakeRangedCost(player1Monster.rangedCost);
 
             player2HUD.UpdateHP(player2Monster.currentHP);
+            player2HUD.UpdateHPText(player2Monster.currentHP);
+            dialogueText.text = "The attack landed!";
+
             player1HUD.UpdateEnergy(player1Monster.currentEnergy);
+            player1HUD.UpdateEnergyText(player1Monster.currentEnergy);
+
+            yield return new WaitForSeconds(1f);
 
             player1Monster.EnergyPerTurn(player1Monster.energyPerTurn);
-            yield return new WaitForSeconds(1f);
             player1HUD.UpdateEnergy(player1Monster.currentEnergy);
-            dialogueText.text = "The attack landed!";
+            player1HUD.UpdateEnergyText(player1Monster.currentEnergy);
+            dialogueText.text = "Energy restored!";
 
             yield return new WaitForSeconds(1f);
 
@@ -173,7 +189,7 @@ public class BattleSystemMultiplayer : MonoBehaviour
         }
         else
         {
-            dialogueText.text = "Not Enough Energy!";
+            dialogueText.text = "Not enough energy!";
             state = BattleState.PLAYER1TURN;
         }
     }
@@ -185,7 +201,6 @@ public class BattleSystemMultiplayer : MonoBehaviour
         {
             return;
         }
-
         // Stops players from being able to use abilities over and over
         state = BattleState.PLAYERACTION;
         StartCoroutine(Player1Heal());
@@ -202,13 +217,19 @@ public class BattleSystemMultiplayer : MonoBehaviour
             bool isDead = player1Monster.PlayerHeal(player1Monster.healAmount);
             player1Monster.TakeHealCost(player1Monster.healCost);
 
-            player1HUD.UpdateHP(player2Monster.currentHP);
+            player1HUD.UpdateHP(player1Monster.currentHP);
+            player1HUD.UpdateHPText(player1Monster.currentHP);
+            dialogueText.text = "You healed 15 points";
+
             player1HUD.UpdateEnergy(player1Monster.currentEnergy);
+            player1HUD.UpdateEnergyText(player1Monster.currentEnergy);
+
+            yield return new WaitForSeconds(1f);
 
             player1Monster.EnergyPerTurn(player1Monster.energyPerTurn);
-            yield return new WaitForSeconds(1f);
             player1HUD.UpdateEnergy(player1Monster.currentEnergy);
-            dialogueText.text = "You healed 30 points";
+            player1HUD.UpdateEnergyText(player1Monster.currentEnergy);
+            dialogueText.text = "Energy restored";
 
             yield return new WaitForSeconds(1f);
 
@@ -227,7 +248,7 @@ public class BattleSystemMultiplayer : MonoBehaviour
         }
         else
         {
-            dialogueText.text = "Not Enough Energy!";
+            dialogueText.text = "Not enough energy!";
             state = BattleState.PLAYER1TURN;
         }
     }
@@ -239,7 +260,6 @@ public class BattleSystemMultiplayer : MonoBehaviour
         {
             return;
         }
-
         // Stops players from being able to use abilities over and over
         state = BattleState.PLAYERACTION;
         StartCoroutine(Player1Special());
@@ -257,12 +277,18 @@ public class BattleSystemMultiplayer : MonoBehaviour
             player1Monster.TakeSpecialCost(player1Monster.specialCost);
 
             player2HUD.UpdateHP(player2Monster.currentHP);
+            player2HUD.UpdateHPText(player2Monster.currentHP);
+            dialogueText.text = "The attack landed!";
+
             player1HUD.UpdateEnergy(player1Monster.currentEnergy);
+            player1HUD.UpdateEnergyText(player1Monster.currentEnergy);
+
+            yield return new WaitForSeconds(1f);
 
             player1Monster.EnergyPerTurn(player1Monster.energyPerTurn);
-            yield return new WaitForSeconds(1f);
             player1HUD.UpdateEnergy(player1Monster.currentEnergy);
-            dialogueText.text = "The attack landed!";
+            player1HUD.UpdateEnergyText(player1Monster.currentEnergy);
+            dialogueText.text = "Energy restored!";
 
             yield return new WaitForSeconds(1f);
 
@@ -281,7 +307,7 @@ public class BattleSystemMultiplayer : MonoBehaviour
         }
         else
         {
-            dialogueText.text = "Not Enough Energy!";
+            dialogueText.text = "Not enough energy!";
             state = BattleState.PLAYER1TURN;
         }
     }
@@ -292,7 +318,7 @@ public class BattleSystemMultiplayer : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         state = BattleState.PLAYER2TURN;
-        dialogueText.text = "Player 2's Turn!";
+        dialogueText.text = "Player 2's turn!";
     }
 
     // Use melee attack when melee button is pressed
@@ -302,7 +328,6 @@ public class BattleSystemMultiplayer : MonoBehaviour
         {
             return;
         }
-
         // Stops players from being able to use abilities over and over
         state = BattleState.PLAYERACTION;
         StartCoroutine(Player2Melee());
@@ -319,12 +344,18 @@ public class BattleSystemMultiplayer : MonoBehaviour
             player2Monster.TakeMeleeCost(player2Monster.meleeCost);
 
             player1HUD.UpdateHP(player1Monster.currentHP);
+            player1HUD.UpdateHPText(player1Monster.currentHP);
+            dialogueText.text = "The attack landed!";
+
             player2HUD.UpdateEnergy(player2Monster.currentEnergy);
+            player2HUD.UpdateEnergyText(player2Monster.currentEnergy);
+
+            yield return new WaitForSeconds(1f);
 
             player2Monster.EnergyPerTurn(player2Monster.energyPerTurn);
-            yield return new WaitForSeconds(1f);
             player2HUD.UpdateEnergy(player2Monster.currentEnergy);
-            dialogueText.text = "The attack landed!";
+            player2HUD.UpdateEnergyText(player2Monster.currentEnergy);
+            dialogueText.text = "Energy restored!";
 
             yield return new WaitForSeconds(1f);
 
@@ -343,7 +374,7 @@ public class BattleSystemMultiplayer : MonoBehaviour
         }
         else
         {
-            dialogueText.text = "Not Enough Energy!";
+            dialogueText.text = "Not enough energy!";
             state = BattleState.PLAYER2TURN;
         }
     }
@@ -355,7 +386,6 @@ public class BattleSystemMultiplayer : MonoBehaviour
         {
             return;
         }
-
         // Stops players from being able to use abilities over and over
         state = BattleState.PLAYERACTION;
         StartCoroutine(Player2Ranged());
@@ -373,12 +403,18 @@ public class BattleSystemMultiplayer : MonoBehaviour
             player2Monster.TakeRangedCost(player2Monster.rangedCost);
 
             player1HUD.UpdateHP(player1Monster.currentHP);
+            player1HUD.UpdateHPText(player1Monster.currentHP);
+            dialogueText.text = "The attack landed!";
+
             player2HUD.UpdateEnergy(player2Monster.currentEnergy);
+            player2HUD.UpdateEnergyText(player2Monster.currentEnergy);
+
+            yield return new WaitForSeconds(1f);
 
             player2Monster.EnergyPerTurn(player2Monster.energyPerTurn);
-            yield return new WaitForSeconds(1f);
             player2HUD.UpdateEnergy(player2Monster.currentEnergy);
-            dialogueText.text = "The attack landed!";
+            player2HUD.UpdateEnergyText(player2Monster.currentEnergy);
+            dialogueText.text = "Energy restored!";
 
             yield return new WaitForSeconds(1f);
 
@@ -397,7 +433,7 @@ public class BattleSystemMultiplayer : MonoBehaviour
         }
         else
         {
-            dialogueText.text = "Not Enough Energy!";
+            dialogueText.text = "Not enough energy!";
             state = BattleState.PLAYER2TURN;
         }
     }
@@ -409,7 +445,6 @@ public class BattleSystemMultiplayer : MonoBehaviour
         {
             return;
         }
-
         // Stops players from being able to use abilities over and over
         state = BattleState.PLAYERACTION;
         StartCoroutine(Player2Heal());
@@ -426,13 +461,19 @@ public class BattleSystemMultiplayer : MonoBehaviour
             bool isDead = player2Monster.PlayerHeal(player2Monster.healAmount);
             player2Monster.TakeHealCost(player2Monster.healCost);
 
-            player2HUD.UpdateHP(player1Monster.currentHP);
+            player2HUD.UpdateHP(player2Monster.currentHP);
+            player2HUD.UpdateHPText(player2Monster.currentHP);
+            dialogueText.text = "You healed 15 points!";
+
             player2HUD.UpdateEnergy(player2Monster.currentEnergy);
+            player2HUD.UpdateEnergyText(player2Monster.currentEnergy);
+
+            yield return new WaitForSeconds(1f);
 
             player2Monster.EnergyPerTurn(player2Monster.energyPerTurn);
-            yield return new WaitForSeconds(1f);
             player2HUD.UpdateEnergy(player2Monster.currentEnergy);
-            dialogueText.text = "You healed 30 points";
+            player2HUD.UpdateEnergyText(player2Monster.currentEnergy);
+            dialogueText.text = "Energy restored!";
 
             yield return new WaitForSeconds(1f);
 
@@ -451,7 +492,7 @@ public class BattleSystemMultiplayer : MonoBehaviour
         }
         else
         {
-            dialogueText.text = "Not Enough Energy!";
+            dialogueText.text = "Not enough energy!";
             state = BattleState.PLAYER2TURN;
         }
     }
@@ -463,7 +504,6 @@ public class BattleSystemMultiplayer : MonoBehaviour
         {
             return;
         }
-
         // Stops players from being able to use abilities over and over
         state = BattleState.PLAYERACTION;
         StartCoroutine(Player2Special());
@@ -481,12 +521,18 @@ public class BattleSystemMultiplayer : MonoBehaviour
             player2Monster.TakeSpecialCost(player2Monster.specialCost);
 
             player1HUD.UpdateHP(player1Monster.currentHP);
+            player1HUD.UpdateHPText(player1Monster.currentHP);
+            dialogueText.text = "The attack landed!";
+
             player2HUD.UpdateEnergy(player2Monster.currentEnergy);
+            player2HUD.UpdateEnergyText(player2Monster.currentEnergy);
+
+            yield return new WaitForSeconds(1f);
 
             player2Monster.EnergyPerTurn(player2Monster.energyPerTurn);
-            yield return new WaitForSeconds(1f);
             player2HUD.UpdateEnergy(player2Monster.currentEnergy);
-            dialogueText.text = "The attack landed!";
+            player2HUD.UpdateEnergyText(player2Monster.currentEnergy);
+            dialogueText.text = "Energy restored!";
 
             yield return new WaitForSeconds(1f);
 
@@ -516,11 +562,17 @@ public class BattleSystemMultiplayer : MonoBehaviour
         {
             dialogueText.text = "Player 1 Wins!";
             mmButton.gameObject.SetActive(true);
+            backButton.gameObject.SetActive(false);
+            abilityPanel.gameObject.SetActive(false);
+            abilityPanel2.gameObject.SetActive(false);
         }
         else if (state == BattleState.LOST)
         {
             dialogueText.text = "You lost the battle!";
             mmButton.gameObject.SetActive(true);
+            backButton.gameObject.SetActive(false);
+            abilityPanel.gameObject.SetActive(false);
+            abilityPanel2.gameObject.SetActive(false);
         }
     }
 }
