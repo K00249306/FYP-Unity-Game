@@ -5,11 +5,8 @@ using UnityEngine.UI;
 
 public class AnimationControls : MonoBehaviour
 {
-    public Animator animator;
-    public Button meleeButton;
-    public Button rangedButton;
-    public Button healButton;
-    public Button specialButton;
+    BattleSystem battleSystem;
+    Animator animator;
 
     // Start is called before the first frame update
     void Start()
@@ -20,9 +17,16 @@ public class AnimationControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        animator = GetComponent<Animator>();
-        animator.SetTrigger("Melee");
-        animator.SetTrigger("Ranged");
-        animator.SetTrigger("Special");
+        MeleeAnimation();
+    }
+
+    public void MeleeAnimation()
+    {
+        //if (battleSystem.OnMeleeButton)
+        //{
+            //animator.SetTrigger("Melee");
+
+        //}
+        //animator.SetTrigger("Melee");
     }
 }

@@ -2603,6 +2603,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6277817225834466656}
   - component: {fileID: 6277817225834466657}
+  - component: {fileID: -8139641161977682865}
+  - component: {fileID: 2471215448948374853}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Untagged
@@ -2641,8 +2643,8 @@ MonoBehaviour:
   monsterName: Torterror
   maxHP: 100
   currentHP: 100
-  maxEnergy: 100
-  currentEnergy: 100
+  maxEnergy: 50
+  currentEnergy: 50
   energyPerTurn: 5
   meleeDamage: 10
   meleeCost: 0
@@ -2652,6 +2654,38 @@ MonoBehaviour:
   specialCost: 20
   healAmount: 15
   healCost: 15
+--- !u!114 &-8139641161977682865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6277817225834466659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46cf0e45fb747ff438009563697dcfdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &2471215448948374853
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6277817225834466659}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 09e72b1ae90d11d4297b53b989da9fe3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &6277817225890435882
 GameObject:
   m_ObjectHideFlags: 0

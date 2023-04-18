@@ -3229,8 +3229,8 @@ MonoBehaviour:
   monsterName: Boulder Fiend
   maxHP: 120
   currentHP: 120
-  maxEnergy: 80
-  currentEnergy: 80
+  maxEnergy: 40
+  currentEnergy: 40
   energyPerTurn: 5
   meleeDamage: 10
   meleeCost: 0

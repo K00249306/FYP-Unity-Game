@@ -9,6 +9,28 @@ public class BattleSystemMultiplayer : MonoBehaviour
     // Creates different states or stages of game 
     public enum BattleState { START, PLAYER1TURN, PLAYER2TURN, PLAYERACTION, WON, LOST }
 
+    // Stats to be stored
+    // Player 1 Stats
+    public int gamesPlayed1 = 0;
+    public int wins1 = 0;
+    public int losses1 = 0;
+    
+    // Player 2 Stats
+    public int gamesPlayed2 = 0;
+    public int wins2 = 0;
+    public int losses2 = 0;
+
+    // UI text
+    public TextMeshProUGUI dialogueText;
+
+    public TextMeshProUGUI gamesPlayed1Text;
+    public TextMeshProUGUI wins1Text;
+    public TextMeshProUGUI losses1Text;
+
+    public TextMeshProUGUI gamesPlayed2Text;
+    public TextMeshProUGUI wins2Text;
+    public TextMeshProUGUI losses2Text;
+
     // Buttons and objects to become active and not active when match is complete
     public Button mmButton;
     public Button backButton;
@@ -27,9 +49,6 @@ public class BattleSystemMultiplayer : MonoBehaviour
     Monster player1Monster;
     Monster player2Monster;
 
-    //public TextMeshProUGUI dialogueText;
-    public TMP_Text dialogueText;
-
     // References HUDs
     public BattleHUD player1HUD;
     public BattleHUD player2HUD;
@@ -40,6 +59,15 @@ public class BattleSystemMultiplayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        LoadData();
+        gamesPlayed1Text.text = gamesPlayed1.ToString();
+        wins1Text.text = wins1.ToString();
+        losses1Text.text = losses1.ToString();
+
+        gamesPlayed2Text.text = gamesPlayed2.ToString();
+        wins2Text.text = wins2.ToString();
+        losses2Text.text = losses2.ToString();
+
         state = BattleState.START;
         //StartCoroutine(PrepareBattle());
     }
@@ -49,8 +77,34 @@ public class BattleSystemMultiplayer : MonoBehaviour
         StartCoroutine(PrepareBattle());
     }
 
+    // Save data
+    public void SaveData()
+    {
+        SaveSystemM.SaveStats(this);
+    }
+
+    // Load Data
+    public void LoadData()
+    {
+        MultiPlayerData data = SaveSystemM.LoadPlayer();
+
+        gamesPlayed1 = data.gamesPlayed1;
+        wins1 = data.wins1;
+        losses1 = data.losses1;
+
+        gamesPlayed2 = data.gamesPlayed2;
+        wins2 = data.wins2;
+        losses2 = data.losses2;
+    }
+
     IEnumerator PrepareBattle()
     {
+        // Games played counter increases
+        gamesPlayed1++;
+        gamesPlayed2++;
+
+        SaveData();
+
         // Get information about monsters so UI can be updated
         GameObject player1 = Instantiate(player1Prefab, player1Location);
         player1Monster = player1.GetComponent<Monster>();
@@ -565,14 +619,26 @@ public class BattleSystemMultiplayer : MonoBehaviour
             backButton.gameObject.SetActive(false);
             abilityPanel.gameObject.SetActive(false);
             abilityPanel2.gameObject.SetActive(false);
+
+            // Wins and losses counters adjusted
+            wins1++;
+            losses2++;
+
+            SaveData();
         }
         else if (state == BattleState.LOST)
         {
-            dialogueText.text = "You lost the battle!";
+            dialogueText.text = "Player 2 Wins!";
             mmButton.gameObject.SetActive(true);
             backButton.gameObject.SetActive(false);
             abilityPanel.gameObject.SetActive(false);
             abilityPanel2.gameObject.SetActive(false);
+
+            // Wins and losses counters adjusted
+            wins2++;
+            losses1++;
+
+            SaveData();
         }
     }
 }

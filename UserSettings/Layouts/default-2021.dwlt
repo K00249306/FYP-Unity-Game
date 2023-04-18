@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 95
+  controlID: 97
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -94,8 +94,8 @@ MonoBehaviour:
     y: 0
     width: 322
     height: 549.3333
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -344,10 +344,10 @@ MonoBehaviour:
       e32: 0
       e33: 1
   m_PreviewAnimator: {fileID: 0}
-  m_AnimatorController: {fileID: 9100000, guid: 886e54035c1161d49acb813dc93b1115,
+  m_AnimatorController: {fileID: 9100000, guid: 09e72b1ae90d11d4297b53b989da9fe3,
     type: 2}
   m_BreadCrumbs:
-  - m_Target: {fileID: -1812135498319978757, guid: 886e54035c1161d49acb813dc93b1115,
+  - m_Target: {fileID: -8936023391407791943, guid: 09e72b1ae90d11d4297b53b989da9fe3,
       type: 2}
     m_ScrollPosition: {x: 0, y: 0}
   stateMachineGraph: {fileID: 0}
@@ -403,22 +403,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs
+    - Assets/Scripts
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Prefabs
+  - Assets/Scripts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\bobdm\OneDrive\Desktop\FYP-Unity-Game
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 8e6a0000
-    m_LastClickedID: 27278
-    m_ExpandedIDs: 000000007a6a00007c6a00007e6a0000806a000000ca9a3b
+    m_SelectedIDs: 9e6a0000
+    m_LastClickedID: 27294
+    m_ExpandedIDs: 00000000866a0000886a00008a6a00008c6a000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -444,9 +444,9 @@ MonoBehaviour:
       m_ResourceFile: 
   m_AssetTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 
-    m_LastClickedID: 0
-    m_ExpandedIDs: 000000007a6a00007c6a00007e6a0000806a0000
+    m_SelectedIDs: 946a0000
+    m_LastClickedID: 27284
+    m_ExpandedIDs: ffffffff00000000866a0000886a00008a6a00008c6a0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -578,7 +578,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 36c7fdff50cafdff6acdfdff84d0fdffa4d3fdff8e28feff483ffeff5e42feff7445feff8a48feffa04bfeff6255feff948bfeffd4b6ffff0accffff30fbffffd45e0000d25f00000460000088620000b6830000e8830000d0930000029400008aa5010066e701007ef40100a4f801002efd010054010200de0502007424020052930200ba970200549c0200bca0020024a50200
+      m_ExpandedIDs: 36a1feff88dafeff5eedfeff30fbffffd85e00004e5f0000d65f0000f45f000008600000fe620000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -914,9 +914,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: -0.14973687, y: -0.009790951, z: 0.0014827795, w: -0.98867625}
   m_Size:
-    m_Target: 258.06454
+    m_Target: 243.3316
     speed: 2
-    m_Value: 258.06454
+    m_Value: 243.3316
   m_Ortho:
     m_Target: 0
     speed: 2
