@@ -617,8 +617,8 @@ public class BattleSystemMultiplayer : MonoBehaviour
             dialogueText.text = "Player 1 Wins!";
             mmButton.gameObject.SetActive(true);
             backButton.gameObject.SetActive(false);
-            abilityPanel.gameObject.SetActive(false);
-            abilityPanel2.gameObject.SetActive(false);
+            // abilityPanel.gameObject.SetActive(false);
+            // abilityPanel2.gameObject.SetActive(false);
 
             // Wins and losses counters adjusted
             wins1++;
@@ -631,8 +631,8 @@ public class BattleSystemMultiplayer : MonoBehaviour
             dialogueText.text = "Player 2 Wins!";
             mmButton.gameObject.SetActive(true);
             backButton.gameObject.SetActive(false);
-            abilityPanel.gameObject.SetActive(false);
-            abilityPanel2.gameObject.SetActive(false);
+            // abilityPanel.gameObject.SetActive(false);
+            // abilityPanel2.gameObject.SetActive(false);
 
             // Wins and losses counters adjusted
             wins2++;

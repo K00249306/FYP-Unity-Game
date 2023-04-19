@@ -584,7 +584,7 @@ public class BattleSystem : MonoBehaviour
             dialogueText.text = "Player 1 Wins!";
             mmButton.gameObject.SetActive(true);
             backButton.gameObject.SetActive(false);
-            abilityPanel.gameObject.SetActive(false);
+            // abilityPanel.gameObject.SetActive(false);
 
             // Wins and losses counters adjusted
             wins1++;
@@ -597,7 +597,7 @@ public class BattleSystem : MonoBehaviour
             dialogueText.text = "You lost the battle!";
             mmButton.gameObject.SetActive(true);
             backButton.gameObject.SetActive(false);
-            abilityPanel.gameObject.SetActive(false);
+            // abilityPanel.gameObject.SetActive(false);
 
             // Wins and losses counters adjusted
             wins2++;

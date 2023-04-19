@@ -17,16 +17,10 @@ public class AnimationControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MeleeAnimation();
     }
 
     public void MeleeAnimation()
     {
-        //if (battleSystem.OnMeleeButton)
-        //{
-            //animator.SetTrigger("Melee");
-
-        //}
-        //animator.SetTrigger("Melee");
+        animator.SetTrigger("Melee");
     }
 }
