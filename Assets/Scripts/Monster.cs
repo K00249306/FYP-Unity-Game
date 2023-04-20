@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Monster : MonoBehaviour
 {
+    // Monster stats/info
     public string monsterName;
 
     public int maxHP;
@@ -186,6 +187,7 @@ public class Monster : MonoBehaviour
         }
     }
 
+    // Gives players energy every turn
     public bool EnergyPerTurn(int energyPerTurn)
     {
         currentEnergy += energyPerTurn;

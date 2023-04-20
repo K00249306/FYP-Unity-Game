@@ -6,6 +6,7 @@ using TMPro;
 
 public class BattleHUD : MonoBehaviour
 {
+    // UI Elements
     public TextMeshProUGUI hpText;
     public Slider hpSlider;
 
@@ -16,7 +17,6 @@ public class BattleHUD : MonoBehaviour
     // Method to update UI
     public void UpdateHud(Monster monster)
     {
-        // hpText.text = monster.currentHP;
         hpSlider.maxValue = monster.maxHP;
         hpSlider.value = monster.currentHP;
         energySlider.maxValue = monster.maxEnergy;
@@ -26,7 +26,7 @@ public class BattleHUD : MonoBehaviour
     // Updates HP text
     public void UpdateHPText(int hp)
     {
-        // HP = 0 if energy goes into the negative
+        // HP = 0 if HP goes into the negative
         if (hp <= 0)
         {
             hpText.text = 0.ToString();

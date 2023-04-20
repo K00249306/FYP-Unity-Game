@@ -73,18 +73,19 @@ public class BattleSystem : MonoBehaviour
         //StartCoroutine(PrepareBattle());
     }
 
+    // Starts game
     public void StartGame()
     {
         StartCoroutine(PrepareBattle());
     }
 
-    // Save data
+    // Saves data
     public void SaveData()
     {
         SaveSystemS.SaveStats(this);
     }
 
-    // Load Data
+    // Loads Data
     public void LoadData()
     {
         SinglePlayerData data = SaveSystemS.LoadPlayer();
@@ -106,25 +107,25 @@ public class BattleSystem : MonoBehaviour
 
         SaveData();
 
-        // Get information about monsters so UI can be updated
+        // Instantiates monsters at empty objects locations
         GameObject player1 = Instantiate(player1Prefab, player1Location);
         player1Monster = player1.GetComponent<Monster>();
 
         GameObject player2 = Instantiate(player2Prefab, player2Location);
         player2Monster = player2.GetComponent<Monster>();
 
+        // Get information about monsters so UI can be updated
         player1HUD.UpdateHud(player1Monster);
         player2HUD.UpdateHud(player2Monster);
 
         dialogueText.text = "Fight!";
 
-        // Waits 3 seconds before changing states
-        yield return new WaitForSeconds(3f);
+        // Waits 2 seconds before changing states
+        yield return new WaitForSeconds(2f);
 
         // Sets state to Player 1's turn
         state = BattleState.PLAYER1TURN;
         Player1Turn();
-
     }
 
     void Player1Turn()
@@ -152,7 +153,7 @@ public class BattleSystem : MonoBehaviour
         // Checks if player has enough energy to use ability
         if (player1Monster.meleeCost <= player1Monster.currentEnergy)
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(2f);
 
             bool isDead = player2Monster.TakeMeleeDamage(player1Monster.meleeDamage);
             player1Monster.TakeMeleeCost(player1Monster.meleeCost);
@@ -163,14 +164,14 @@ public class BattleSystem : MonoBehaviour
             player1HUD.UpdateEnergy(player1Monster.currentEnergy);
             player1HUD.UpdateEnergyText(player1Monster.currentEnergy);
 
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(2f);
 
             player1Monster.EnergyPerTurn(player1Monster.energyPerTurn);
             player1HUD.UpdateEnergy(player1Monster.currentEnergy);
             player1HUD.UpdateEnergyText(player1Monster.currentEnergy);
             dialogueText.text = "Energy restored!";
 
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(2f);
 
             if (isDead)
             {
@@ -210,7 +211,7 @@ public class BattleSystem : MonoBehaviour
         // Checks if player has enough energy to use ability
         if (player1Monster.rangedCost <= player1Monster.currentEnergy)
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(2f);
 
             bool isDead = player2Monster.TakeRangedDamage(player1Monster.rangedDamage);
             player1Monster.TakeRangedCost(player1Monster.rangedCost);
@@ -221,14 +222,14 @@ public class BattleSystem : MonoBehaviour
             player1HUD.UpdateEnergy(player1Monster.currentEnergy);
             player1HUD.UpdateEnergyText(player1Monster.currentEnergy);
 
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(2f);
 
             player1Monster.EnergyPerTurn(player1Monster.energyPerTurn);
             player1HUD.UpdateEnergy(player1Monster.currentEnergy);
             player1HUD.UpdateEnergyText(player1Monster.currentEnergy);
             dialogueText.text = "Energy restored!";
 
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(2f);
 
             if (isDead)
             {
@@ -268,7 +269,7 @@ public class BattleSystem : MonoBehaviour
         // Checks if player has enough energy to use ability
         if (player1Monster.healCost <= player1Monster.currentEnergy)
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(2f);
 
             bool isDead = player1Monster.PlayerHeal(player1Monster.healAmount);
             player1Monster.TakeHealCost(player1Monster.healCost);
@@ -280,14 +281,14 @@ public class BattleSystem : MonoBehaviour
             player1HUD.UpdateEnergy(player1Monster.currentEnergy);
             player1HUD.UpdateEnergyText(player1Monster.currentEnergy);
 
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(2f);
 
             player1Monster.EnergyPerTurn(player1Monster.energyPerTurn);
             player1HUD.UpdateEnergy(player1Monster.currentEnergy);
             player1HUD.UpdateEnergyText(player1Monster.currentEnergy);
             dialogueText.text = "Energy restored";
 
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(2f);
 
             if (isDead)
             {
@@ -327,7 +328,7 @@ public class BattleSystem : MonoBehaviour
         // Checks if player has enough energy to use ability
         if (player1Monster.specialCost <= player1Monster.currentEnergy)
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(2f);
 
             bool isDead = player2Monster.TakeSpecialDamage(player1Monster.specialDamage);
             player1Monster.TakeSpecialCost(player1Monster.specialCost);
@@ -338,14 +339,14 @@ public class BattleSystem : MonoBehaviour
             player1HUD.UpdateEnergy(player1Monster.currentEnergy);
             player1HUD.UpdateEnergyText(player1Monster.currentEnergy);
 
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(2f);
 
             player1Monster.EnergyPerTurn(player1Monster.energyPerTurn);
             player1HUD.UpdateEnergy(player1Monster.currentEnergy);
             player1HUD.UpdateEnergyText(player1Monster.currentEnergy);
             dialogueText.text = "Energy restored!";
 
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(2f);
 
             if (isDead)
             {
@@ -377,7 +378,7 @@ public class BattleSystem : MonoBehaviour
             {
                 dialogueText.text = "Player 2's turn!";
 
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(2f);
 
                 bool isDead = player1Monster.TakeSpecialDamage(player2Monster.specialDamage);
                 player2Monster.TakeSpecialCost(player2Monster.specialCost);
@@ -388,13 +389,13 @@ public class BattleSystem : MonoBehaviour
 
                 player2HUD.UpdateEnergy(player2Monster.currentEnergy);
 
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(2f);
 
                 player2Monster.EnergyPerTurn(player2Monster.energyPerTurn);
                 player2HUD.UpdateEnergy(player2Monster.currentEnergy);
                 dialogueText.text = "Energy restored!";
 
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(2f);
 
                 if (isDead)
                 {
@@ -422,7 +423,7 @@ public class BattleSystem : MonoBehaviour
             {
                 dialogueText.text = "Player 2's turn!";
 
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(2f);
 
                 bool isDead = player1Monster.TakeRangedDamage(player2Monster.rangedDamage);
                 player2Monster.TakeRangedCost(player2Monster.rangedCost);
@@ -433,12 +434,13 @@ public class BattleSystem : MonoBehaviour
 
                 player2HUD.UpdateEnergy(player2Monster.currentEnergy);
 
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(2f);
+
                 player2Monster.EnergyPerTurn(player2Monster.energyPerTurn);
                 player2HUD.UpdateEnergy(player2Monster.currentEnergy);
                 dialogueText.text = "Energy restored!";
 
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(2f);
 
                 if (isDead)
                 {
@@ -466,7 +468,7 @@ public class BattleSystem : MonoBehaviour
             {
                 dialogueText.text = "Player 2's turn!";
 
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(2f);
 
                 bool isDead = player1Monster.TakeMeleeDamage(player2Monster.meleeDamage);
                 player2Monster.TakeMeleeCost(player2Monster.meleeCost);
@@ -477,12 +479,13 @@ public class BattleSystem : MonoBehaviour
 
                 player2HUD.UpdateEnergy(player2Monster.currentEnergy);
 
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(2f);
+
                 player2Monster.EnergyPerTurn(player2Monster.energyPerTurn);
                 player2HUD.UpdateEnergy(player2Monster.currentEnergy);
                 dialogueText.text = "Energy restored!";
 
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(2f);
 
                 if (isDead)
                 {
@@ -503,12 +506,12 @@ public class BattleSystem : MonoBehaviour
                 state = BattleState.PLAYER1TURN;
             }
         }
-        // Heal when player 2's HP is below 20% or attacks if not enough energy
+        // Heal when player 2's HP is below 20% or melee attacks if doesn't have enough energy
         else if (player2Monster.currentHP <= player2Monster.maxHP/5)
         {
             if (player2Monster.healCost <= player2Monster.currentEnergy)
             {
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(2f);
 
                 bool isDead = player2Monster.PlayerHeal(player2Monster.healAmount);
                 player2Monster.TakeHealCost(player2Monster.healCost);
@@ -518,13 +521,13 @@ public class BattleSystem : MonoBehaviour
 
                 player2HUD.UpdateEnergy(player2Monster.currentEnergy);
 
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(2f);
 
                 player2Monster.EnergyPerTurn(player2Monster.energyPerTurn);
                 player2HUD.UpdateEnergy(player2Monster.currentEnergy);
                 dialogueText.text = "Energy restored!";
 
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(2f);
 
                 if (isDead)
                 {
@@ -543,7 +546,7 @@ public class BattleSystem : MonoBehaviour
             {
                  dialogueText.text = "Player 2's turn!";
 
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(2f);
 
                 bool isDead = player1Monster.TakeMeleeDamage(player2Monster.meleeDamage);
                 player2Monster.TakeMeleeCost(player2Monster.meleeCost);
@@ -554,12 +557,13 @@ public class BattleSystem : MonoBehaviour
 
                 player2HUD.UpdateEnergy(player2Monster.currentEnergy);
 
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(2f);
+
                 player2Monster.EnergyPerTurn(player2Monster.energyPerTurn);
                 player2HUD.UpdateEnergy(player2Monster.currentEnergy);
                 dialogueText.text = "Energy Restored!";
 
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(2f);
 
                 if (isDead)
                 {
@@ -594,7 +598,7 @@ public class BattleSystem : MonoBehaviour
         }
         else if (state == BattleState.LOST)
         {
-            dialogueText.text = "You lost the battle!";
+            dialogueText.text = "Player 2 Wins!";
             mmButton.gameObject.SetActive(true);
             backButton.gameObject.SetActive(false);
             // abilityPanel.gameObject.SetActive(false);

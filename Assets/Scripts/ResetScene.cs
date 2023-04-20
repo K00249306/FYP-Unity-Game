@@ -17,6 +17,7 @@ public class ResetScene : MonoBehaviour
         
     }
 
+    // Resets scene/game
     public void ResetGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

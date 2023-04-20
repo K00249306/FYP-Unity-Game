@@ -8,12 +8,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BeastBrawlingBedlam.unity
     guid: c850ee8c3b14cc8459e7e186857cf567
-  - enabled: 1
-    path: Assets/Scenes/Multiplayer.unity
-    guid: 6e225431f3fbdf24a97b3ef772413a1f
-  - enabled: 1
-    path: Assets/Scenes/Singleplayer.unity
-    guid: cda25fa52e930364ab28e003fa8e482b
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 1129a702bb388f64195b8598fae24855,
       type: 2}

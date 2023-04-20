@@ -15,6 +15,7 @@ public class MoveLeft : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Background moves left at specified speed
         transform.Translate(Vector3.left * Time.deltaTime * speed);
     }
 }
