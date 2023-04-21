@@ -1,13 +1,170 @@
 {
-    "m_SelectedDeviceId": "",
+    "m_SelectedDeviceId": "22b2ba0b3a057ece",
     "m_SelectedPackage": {
-        "deviceId": "",
-        "name": "",
-        "processId": 0,
+        "deviceId": "22b2ba0b3a057ece",
+        "name": "com.DefaultCompany.BeastBrawlingBedlam",
+        "processId": 12198,
         "exited": false
     },
     "m_SelectedPriority": 0,
-    "m_KnownPackagesForSerialization": [],
+    "m_KnownPackagesForSerialization": [
+        {
+            "deviceId": "22b2ba0b3a057ece",
+            "name": "com.DefaultCompany.BeastBrawlingBedlam",
+            "processId": 2221,
+            "exited": true
+        },
+        {
+            "deviceId": "22b2ba0b3a057ece",
+            "name": "com.DefaultCompany.BeastBrawlingBedlam",
+            "processId": 6860,
+            "exited": true
+        },
+        {
+            "deviceId": "22b2ba0b3a057ece",
+            "name": "com.DefaultCompany.BeastBrawlingBedlam",
+            "processId": 10529,
+            "exited": true
+        },
+        {
+            "deviceId": "22b2ba0b3a057ece",
+            "name": "com.DefaultCompany.BeastBrawlingBedlam",
+            "processId": 13605,
+            "exited": true
+        },
+        {
+            "deviceId": "22b2ba0b3a057ece",
+            "name": "com.DefaultCompany.BeastBrawlingBedlam",
+            "processId": 17399,
+            "exited": false
+        },
+        {
+            "deviceId": "22b2ba0b3a057ece",
+            "name": "com.DefaultCompany.BeastBrawlingBedlam",
+            "processId": 21626,
+            "exited": false
+        },
+        {
+            "deviceId": "22b2ba0b3a057ece",
+            "name": "com.DefaultCompany.BeastBrawlingBedlam",
+            "processId": 24956,
+            "exited": false
+        },
+        {
+            "deviceId": "22b2ba0b3a057ece",
+            "name": "com.DefaultCompany.BeastBrawlingBedlam",
+            "processId": 29858,
+            "exited": false
+        },
+        {
+            "deviceId": "22b2ba0b3a057ece",
+            "name": "com.DefaultCompany.BeastBrawlingBedlam",
+            "processId": 32441,
+            "exited": false
+        },
+        {
+            "deviceId": "22b2ba0b3a057ece",
+            "name": "com.DefaultCompany.BeastBrawlingBedlam",
+            "processId": 6733,
+            "exited": false
+        },
+        {
+            "deviceId": "22b2ba0b3a057ece",
+            "name": "com.DefaultCompany.BeastBrawlingBedlam",
+            "processId": 10950,
+            "exited": false
+        },
+        {
+            "deviceId": "22b2ba0b3a057ece",
+            "name": "com.DefaultCompany.BeastBrawlingBedlam",
+            "processId": 19771,
+            "exited": false
+        },
+        {
+            "deviceId": "22b2ba0b3a057ece",
+            "name": "com.DefaultCompany.BeastBrawlingBedlam",
+            "processId": 23187,
+            "exited": false
+        },
+        {
+            "deviceId": "22b2ba0b3a057ece",
+            "name": "com.DefaultCompany.BeastBrawlingBedlam",
+            "processId": 26561,
+            "exited": false
+        },
+        {
+            "deviceId": "22b2ba0b3a057ece",
+            "name": "com.DefaultCompany.BeastBrawlingBedlam",
+            "processId": 29664,
+            "exited": false
+        },
+        {
+            "deviceId": "22b2ba0b3a057ece",
+            "name": "com.DefaultCompany.BeastBrawlingBedlam",
+            "processId": 30562,
+            "exited": false
+        },
+        {
+            "deviceId": "22b2ba0b3a057ece",
+            "name": "com.DefaultCompany.BeastBrawlingBedlam",
+            "processId": 4576,
+            "exited": false
+        },
+        {
+            "deviceId": "22b2ba0b3a057ece",
+            "name": "com.DefaultCompany.BeastBrawlingBedlam",
+            "processId": 7924,
+            "exited": false
+        },
+        {
+            "deviceId": "22b2ba0b3a057ece",
+            "name": "com.DefaultCompany.BeastBrawlingBedlam",
+            "processId": 13372,
+            "exited": false
+        },
+        {
+            "deviceId": "22b2ba0b3a057ece",
+            "name": "com.DefaultCompany.BeastBrawlingBedlam",
+            "processId": 17528,
+            "exited": false
+        },
+        {
+            "deviceId": "22b2ba0b3a057ece",
+            "name": "com.DefaultCompany.BeastBrawlingBedlam",
+            "processId": 23345,
+            "exited": false
+        },
+        {
+            "deviceId": "22b2ba0b3a057ece",
+            "name": "com.DefaultCompany.BeastBrawlingBedlam",
+            "processId": 26059,
+            "exited": false
+        },
+        {
+            "deviceId": "22b2ba0b3a057ece",
+            "name": "com.DefaultCompany.BeastBrawlingBedlam",
+            "processId": 29435,
+            "exited": false
+        },
+        {
+            "deviceId": "22b2ba0b3a057ece",
+            "name": "com.DefaultCompany.BeastBrawlingBedlam",
+            "processId": 2303,
+            "exited": false
+        },
+        {
+            "deviceId": "22b2ba0b3a057ece",
+            "name": "com.DefaultCompany.BeastBrawlingBedlam",
+            "processId": 7799,
+            "exited": false
+        },
+        {
+            "deviceId": "22b2ba0b3a057ece",
+            "name": "com.DefaultCompany.BeastBrawlingBedlam",
+            "processId": 12198,
+            "exited": false
+        }
+    ],
     "m_Tags": {
         "m_Entries": [
             {
@@ -41,9 +198,20 @@
         ]
     },
     "m_MemoryViewerState": {
-        "MemoryWindowHeight": 0.0,
-        "MemoryWindowWidth": 0.0,
-        "MemoryTypeEnabled": [],
+        "MemoryWindowHeight": 300.0,
+        "MemoryWindowWidth": 170.0,
+        "MemoryTypeEnabled": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+        ],
         "MemoryGroup": 2,
         "Behavior": 0
     },
