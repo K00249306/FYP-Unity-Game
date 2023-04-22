@@ -1415,10 +1415,13 @@ MonoBehaviour:
   meleeCost: 0
   rangedDamage: 20
   rangedCost: 10
+  rangedUses: 3
   specialDamage: 30
   specialCost: 20
+  specialUses: 1
   healAmount: 15
   healCost: 15
+  healUses: 2
 --- !u!1 &3074250520636182463
 GameObject:
   m_ObjectHideFlags: 0

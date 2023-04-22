@@ -15,18 +15,25 @@ public class Monster : MonoBehaviour
 
     public int meleeDamage;
     public int meleeCost;
+
     public int rangedDamage;
     public int rangedCost;
-    public int specialDamage;
-    public int specialCost;
+    public int rangedUses;
+
     public int healAmount;
     public int healCost;
+    public int healUses;
+
+    public int specialDamage;
+    public int specialCost;
+    public int specialUses;
 
     // Subtracts melee damage and checks if attacked player is dead
     public bool TakeMeleeDamage(int meleeDamage)
     {
         currentHP -= meleeDamage;
 
+        // Returns value
         if(currentHP <= 0)
         {
             return true;
@@ -42,16 +49,12 @@ public class Monster : MonoBehaviour
     {
         currentEnergy -= meleeCost;
 
-        if (currentEnergy > maxEnergy)
-        {
-            currentEnergy = maxEnergy;
-        }
-
         if (currentEnergy <= 0)
         {
             currentEnergy = 0;
         }
 
+        // Returns value
         if (currentEnergy <= 0)
         {
             return true;
@@ -67,6 +70,7 @@ public class Monster : MonoBehaviour
     {
         currentHP -= rangedDamage;
 
+        // Returns value
         if (currentHP <= 0)
         {
             return true;
@@ -82,16 +86,12 @@ public class Monster : MonoBehaviour
     {
         currentEnergy -= rangedCost;
 
-        if (currentEnergy > maxEnergy)
-        {
-            currentEnergy = maxEnergy;
-        }
-
         if (currentEnergy <= 0)
         {
             currentEnergy = 0;
         }
 
+        // Returns value
         if (currentEnergy <= 0)
         {
             return true;
@@ -107,6 +107,7 @@ public class Monster : MonoBehaviour
     {
         currentHP -= specialDamage;
 
+        // Returns value
         if (currentHP <= 0)
         {
             return true;
@@ -122,16 +123,12 @@ public class Monster : MonoBehaviour
     {
         currentEnergy -= specialCost;
 
-        if (currentEnergy > maxEnergy)
-        {
-            currentEnergy = maxEnergy;
-        }
-
         if (currentEnergy <= 0)
         {
             currentEnergy = 0;
         }
 
+        // Returns value
         if (currentEnergy <= 0)
         {
             return true;
@@ -152,6 +149,7 @@ public class Monster : MonoBehaviour
             currentHP = maxHP;
         }
 
+        // Returns value
         if (currentEnergy <= 0)
         {
             return true;
@@ -177,6 +175,7 @@ public class Monster : MonoBehaviour
             currentEnergy = 0;
         }
 
+        // Returns value
         if (currentEnergy <= 0)
         {
             return true;
@@ -202,6 +201,56 @@ public class Monster : MonoBehaviour
             currentEnergy = 0;
         }
 
+        // Returns value
+        if (currentEnergy <= 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+
+    // Takes away ranged use
+    public bool RangedUses(int rangeUses)
+    {
+        rangeUses--;
+
+        // Returns value
+        if (currentEnergy <= 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    // Takes away heal use
+    public bool HealUses(int healUses)
+    {
+        healUses--;
+
+        // Returns value
+        if (currentEnergy <= 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    // Takes away special use
+    public bool SpecialUses(int specialUses)
+    {
+        specialUses--;
+
+        // Returns value
         if (currentEnergy <= 0)
         {
             return true;

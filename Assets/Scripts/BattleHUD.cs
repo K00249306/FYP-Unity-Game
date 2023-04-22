@@ -13,7 +13,10 @@ public class BattleHUD : MonoBehaviour
     public TextMeshProUGUI energyText;
     public Slider energySlider;
 
-    
+    public TextMeshProUGUI rangedUsesText;
+    public TextMeshProUGUI healUsesText;
+    public TextMeshProUGUI specialUsesText;
+
     // Method to update UI
     public void UpdateHud(Monster monster)
     {
@@ -53,5 +56,23 @@ public class BattleHUD : MonoBehaviour
     public void UpdateEnergy(int energy)
     {
         energySlider.value = energy;
+    }
+
+    // Updates ranged uses
+    public void UpdateRangedUses(int rangedUses)
+    {
+        rangedUsesText.text = rangedUses.ToString();
+    }
+
+    // Updates heal uses
+    public void UpdateHealUses(int healUses)
+    {
+        healUsesText.text = healUses.ToString();
+    }
+
+    // Updates ranged uses
+    public void UpdateSpecialUses(int specialUses)
+    {
+        specialUsesText.text = specialUses.ToString();
     }
 }
