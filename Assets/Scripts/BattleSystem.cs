@@ -391,7 +391,7 @@ public class BattleSystem : MonoBehaviour
     {
         dialogueText.text = "Player 2's turn!";
 
-        // Special attack when player 2 has more than half energy and HP is greater than 20%
+        // Special attack when player 2 has more than half energy, HP is greater than 20% and has enough uses
         if (player2Monster.currentEnergy > player2Monster.maxEnergy/2 && player2Monster.currentHP > player2Monster.maxHP/5 && player2Monster.specialUses >= 1)
         {
             if (player2Monster.specialCost <= player2Monster.currentEnergy)
@@ -431,7 +431,7 @@ public class BattleSystem : MonoBehaviour
                 }
             }
         }
-        // Ranged attack when player 2 enough energy but is below 50% and HP is greater than 20%
+        // Ranged attack when player 2 has enough energy but is below 50%/has enough uses and HP is greater than 20%
         else if (player2Monster.currentEnergy >= player2Monster.rangedCost && player2Monster.currentHP > player2Monster.maxHP/5 && player2Monster.rangedUses >= 1)
         {
             if (player2Monster.rangedCost <= player2Monster.currentEnergy)
@@ -471,7 +471,7 @@ public class BattleSystem : MonoBehaviour
                 }
             }
         }
-        // Melee when player 2 has enough energy and HP is greater than 20%
+        // Melee when player 2 when currentEnergy is lower than ranged cost and HP is greater than 20%
         else if (player2Monster.currentEnergy <= player2Monster.rangedCost && player2Monster.currentHP > player2Monster.maxHP/5)
         {
             if (player2Monster.meleeCost <= player2Monster.currentEnergy)
@@ -509,7 +509,7 @@ public class BattleSystem : MonoBehaviour
                 }
             }
         }
-        // Heal when player 2's HP is below 20% or melee attacks if doesn't have enough energy
+        // Heal when player 2's HP is below 20% and has heal uses or melee attacks if can't heal
         else if (player2Monster.currentHP <= player2Monster.maxHP/5 && player2Monster.healUses >= 1)
         {
             if (player2Monster.healCost <= player2Monster.currentEnergy)

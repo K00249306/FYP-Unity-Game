@@ -4210,7 +4210,7 @@ GameObject:
   - component: {fileID: 332436521}
   - component: {fileID: 332436522}
   m_Layer: 0
-  m_Name: AR Session Orign
+  m_Name: AR Session Origin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
